@@ -61,7 +61,6 @@ public class MainSortInventory {
         inventory.sort(comparing(Apple::getSize));
         showList(inventory);
 
-
         System.out.println("Reverced sort: \n");
         inventory = inventoryHolder.getInventory();
         System.out.println("Initial inventory: ");
@@ -72,6 +71,15 @@ public class MainSortInventory {
         inventory.sort(c1);
         showList(inventory);
 
+        System.out.println("Reverced sort thenComparing: \n");
+        inventory = inventoryHolder.getInventory();
+        System.out.println("Initial inventory: ");
+        showList(inventory);
+        System.out.println("Result: ");
+        inventory.sort(comparing(Apple::getSize)
+                .reversed()
+                .thenComparing(Apple::getColor));
+        showList(inventory);
 
     }
 
