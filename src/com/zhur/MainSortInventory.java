@@ -6,6 +6,7 @@ import com.zhur.model.InventoryHolder;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static java.util.Comparator.comparing;
 
@@ -80,7 +81,6 @@ public class MainSortInventory {
                 .reversed()
                 .thenComparing(Apple::getColor));
         showList(inventory);
-
     }
 
     public static void showList(List l) {
