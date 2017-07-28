@@ -3,7 +3,7 @@ package com.zhur.model;
 
 public class Apple{
 
-    private Integer size;
+    private int size;
     private String color = "";
 
     public Apple() {
@@ -18,7 +18,7 @@ public class Apple{
         this.color = color;
     }
 
-    public Integer getSize() {
+    public int getSize() {
         return size;
     }
 

@@ -6,9 +6,9 @@ import com.zhur.model.InventoryHolder;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.Predicate;
 
 import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
 
 public class MainSortInventory {
 
@@ -30,7 +30,7 @@ public class MainSortInventory {
         showList(inventory);
         inventory.sort(new Comparator<Apple>() {
             public int compare(Apple a1, Apple a2) {
-                return a1.getSize().compareTo(a2.getSize());
+                return Integer.compare(a1.getSize(), a2.getSize());
             }
         });
         System.out.println("Result:");
@@ -40,7 +40,7 @@ public class MainSortInventory {
         System.out.println("Initial inventory: ");
         inventory = inventoryHolder.getInventory();
         showList(inventory);
-        inventory.sort((a1, a2) -> a1.getSize().compareTo(a2.getSize())
+        inventory.sort((a1, a2) -> Integer.compare(a1.getSize(), a2.getSize())
         );
         System.out.println("Result:");
         showList(inventory);
@@ -59,14 +59,14 @@ public class MainSortInventory {
         System.out.println("Initial inventory: ");
         showList(inventory);
         System.out.println("Result:");
-        inventory.sort(comparing(Apple::getSize));
+        inventory.sort(comparingInt(Apple::getSize));
         showList(inventory);
 
         System.out.println("Reverced sort: \n");
         inventory = inventoryHolder.getInventory();
         System.out.println("Initial inventory: ");
         showList(inventory);
-        Comparator<Apple> c1 = Comparator.comparing(Apple::getSize);
+        Comparator<Apple> c1 = Comparator.comparingInt(Apple::getSize);
         c1 = c1.reversed();
         System.out.println("Result: ");
         inventory.sort(c1);
@@ -77,7 +77,7 @@ public class MainSortInventory {
         System.out.println("Initial inventory: ");
         showList(inventory);
         System.out.println("Result: ");
-        inventory.sort(comparing(Apple::getSize)
+        inventory.sort(comparingInt(Apple::getSize)
                 .reversed()
                 .thenComparing(Apple::getColor));
         showList(inventory);
