@@ -11,7 +11,7 @@ public class MainFindSquaresOfNumbers {
        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
 
         numbers.stream()
-                .map(n -> n*= n)
+                .map(n -> n * n)
                 .collect(toList())
                 .forEach(System.out::println);
     }
