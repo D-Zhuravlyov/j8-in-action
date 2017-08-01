@@ -1,8 +1,9 @@
-package com.zhur;
+package zhur;
 
-import com.zhur.comparator.AppleComparator;
-import com.zhur.model.Apple;
-import com.zhur.model.InventoryHolder;
+
+import zhur.comparator.AppleComparator;
+import zhur.model.Apple;
+import zhur.model.InventoryHolder;
 
 import java.util.Comparator;
 import java.util.List;

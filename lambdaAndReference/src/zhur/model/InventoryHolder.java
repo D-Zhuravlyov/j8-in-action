@@ -1,4 +1,4 @@
-package com.zhur.model;
+package zhur.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,15 @@
-package com.zhur;
+package zhur;
 
-import com.zhur.model.Apple;
+
+import zhur.model.Apple;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static com.zhur.ConstructorBasedRef.map;
-import static com.zhur.ConstructorBasedRef.map2;
+import static zhur.ConstructorBasedRef.map;
+import static zhur.ConstructorBasedRef.map2;
 
 public class MainCreateByRef {
 

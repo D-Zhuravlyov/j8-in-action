@@ -1,4 +1,4 @@
-package com.zhur.model;
+package zhur.model;
 
 
 public class Apple{

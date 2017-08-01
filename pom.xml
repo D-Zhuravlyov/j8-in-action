@@ -24,5 +24,9 @@
             </plugin>
         </plugins>
     </build>
+    <packaging>pom</packaging>
+    <modules>
+        <module>lambdaAndReference</module>
+    </modules>
 
 </project>

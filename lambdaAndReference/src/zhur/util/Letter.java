@@ -1,4 +1,4 @@
-package com.zhur.util;
+package zhur.util;
 
 public class Letter{
 

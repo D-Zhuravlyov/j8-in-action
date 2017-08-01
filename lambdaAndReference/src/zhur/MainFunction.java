@@ -1,6 +1,7 @@
-package com.zhur;
+package zhur;
 
-import com.zhur.util.Letter;
+
+import zhur.util.Letter;
 
 import java.util.function.Function;
 

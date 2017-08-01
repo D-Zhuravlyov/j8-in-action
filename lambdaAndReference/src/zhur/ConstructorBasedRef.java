@@ -1,6 +1,6 @@
-package com.zhur;
+package zhur;
 
-import com.zhur.model.Apple;
+import zhur.model.Apple;
 
 import java.util.ArrayList;
 import java.util.List;
