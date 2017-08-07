@@ -46,6 +46,10 @@ public class Main {
         /*menu2.stream().sorted(Dish::getCalories)
         .findAny();*/
 
-
+        System.out.println(menu2.stream()
+                .filter(dd -> dd.getCalories() < 10)
+                .findFirst()
+                .orElse(new Dish(8, true))
+                );
     }
 }
