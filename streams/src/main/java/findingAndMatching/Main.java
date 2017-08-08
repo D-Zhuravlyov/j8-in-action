@@ -3,6 +3,7 @@ package findingAndMatching;
 import model.Dish;
 import model.Menu;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,8 +44,7 @@ public class Main {
 
         menu2.sort(comparingInt(Dish::getCalories));
 
-        /*menu2.stream().sorted(Dish::getCalories)
-        .findAny();*/
+        menu2.stream().sorted(comparingInt(Dish::getCalories)).findAny();
 
         System.out.println(menu2.stream()
                 .filter(dd -> dd.getCalories() < 10)
