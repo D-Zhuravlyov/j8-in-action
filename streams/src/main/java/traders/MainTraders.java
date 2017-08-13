@@ -127,8 +127,9 @@ public class MainTraders {
     //7.  What’s the highest value of all the transactions?
     private static Double getHighestTransactionValue(List<Transaction> all){
         return all.stream()
-                .max(Comparator.comparingDouble(Transaction::getValue))
-                .orElseThrow(NoSuchElementException::new).getValue();
+                    .map(Transaction::getValue)
+                    .reduce(Double::max)
+                    .orElseThrow(NoSuchElementException::new);
     }
 /*
 
