@@ -41,6 +41,13 @@ public class MainTraders {
         getTradersFromCitySortedByName(transactions, City.KIEV)
                 .forEach(System.out::println);
 
+        System.out.println("\nRAW: ");
+        transactions = td.getTransactionList();
+        transactions.forEach(System.out::println);
+
+        System.out.println("\n4.  Return a string of all traders’ names sorted alphabetically.: ");
+        getTradersNamesSorted(transactions).forEach(System.out::println);
+
 
     }
 
@@ -70,9 +77,18 @@ public class MainTraders {
             .collect(toList());
     }
 
+    //4.  Return a string of all traders’ names sorted alphabetically.
+    private static List<String> getTradersNamesSorted(List<Transaction> all) {
+    return all.stream()
+            .map(Transaction::getTrader)
+            .map(Trader::getName)
+            .distinct()
+            .sorted()
+            .collect(toList());
+    }
+
 /*
 
-            4.  Return a string of all traders’ names sorted alphabetically.
 
 5.  Are any traders based in Milan?
 
