@@ -7,6 +7,7 @@ import model.TransactionsDatas;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import static java.util.stream.Collectors.joining;
@@ -65,6 +66,13 @@ public class MainTraders {
         System.out.println("\n6. Print all transactions’ values from the traders living in provided city.: " +City.KIEV);
         getAllValuesForTradesFrom(transactions, City.KIEV).forEach(System.out::println);
 
+        System.out.println("\nRAW: ");
+        transactions = td.getTransactionList();
+        transactions.forEach(System.out::println);
+
+        System.out.println("\n7.  What’s the highest value of all the transactions? ");
+        System.out.println( getHighestTransactionValue(transactions));
+
     }
 
     // Find all transactions in the given year and sort them by value (small to high);
@@ -116,10 +124,15 @@ public class MainTraders {
                 .collect(toList());
     }
 
+    //7.  What’s the highest value of all the transactions?
+    private static Double getHighestTransactionValue(List<Transaction> all){
+        return all.stream()
+                .max(Comparator.comparingDouble(Transaction::getValue))
+                .orElseThrow(NoSuchElementException::new).getValue();
+    }
 /*
 
 
-7.  What’s the highest value of all the transactions?
 
             8.  Find the transaction with the smallest value.*/
 
