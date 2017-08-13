@@ -7,8 +7,10 @@ import model.TransactionsDatas;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 
 public class MainTraders {
 
@@ -46,7 +48,7 @@ public class MainTraders {
         transactions.forEach(System.out::println);
 
         System.out.println("\n4.  Return a string of all traders’ names sorted alphabetically.: ");
-        getTradersNamesSorted(transactions).forEach(System.out::println);
+        System.out.println( getTradersNamesSorted(transactions));
 
         System.out.println("\nRAW: ");
         transactions = td.getTransactionList();
@@ -66,31 +68,31 @@ public class MainTraders {
     }
 
     //2 “What are all the unique cities where the traders work?
-    private static List<City> getUniqueCities(List<Transaction> all) {
+    private static Set<City> getUniqueCities(List<Transaction> all) {
         return all.stream()
                 .map(Transaction::getTrader)
                 .map(Trader::getCity)
-                .distinct()
-                .collect(toList());
+                .collect(toSet());
     }
 
-    //3.  Find all traders from Kiev and sort them by name.
+    //3.  Find all traders from provided city and sort them by name.
     private static List<Trader> getTradersFromCitySortedByName(List<Transaction> all, City city) {
     return all.stream()
             .map(Transaction::getTrader)
             .filter(tr -> tr.getCity().equals(city))
+            .distinct()
             .sorted(Comparator.comparing(Trader::getName))
             .collect(toList());
     }
 
     //4.  Return a string of all traders’ names sorted alphabetically.
-    private static List<String> getTradersNamesSorted(List<Transaction> all) {
+    private static String getTradersNamesSorted(List<Transaction> all) {
     return all.stream()
-            .map(Transaction::getTrader)
-            .map(Trader::getName)
+            .map(t -> t.getTrader().getName())
             .distinct()
             .sorted()
-            .collect(toList());
+            .reduce((a, b) -> a + " " + b  )
+            .orElse("Empty");
     }
 
     //5.  Are any traders based in provided city?
@@ -101,9 +103,6 @@ public class MainTraders {
 
 /*
 
-
-
-            6.  Print all transactions’ values from the traders living in Cambridge.
 
 7.  What’s the highest value of all the transactions?
 
