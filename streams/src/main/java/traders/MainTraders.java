@@ -72,8 +72,16 @@ public class MainTraders {
         transactions = td.getTransactionList();
         transactions.forEach(System.out::println);
 
-        System.out.println("\n7.  What’s the highest value of all the transactions? ");
+        System.out.println("\n7. What’s the highest value of all the transactions? ");
         System.out.println( getHighestTransactionValue(transactions));
+
+         System.out.println("\nRAW: ");
+        transactions = td.getTransactionList();
+        transactions.forEach(System.out::println);
+
+        System.out.println("\n8. Find the transaction with the smallest value.");
+        System.out.println( getSmallestValueTransaction(transactions));
+
 
     }
 
@@ -131,6 +139,13 @@ public class MainTraders {
         return all.stream()
                     .max(comparingDouble(Transaction::getValue))
                     .orElseThrow(NoSuchElementException::new).getValue();
+    }
+
+    //8.  Find the transaction with the smallest value.
+    private static Transaction getSmallestValueTransaction(List<Transaction> all){
+        return all.stream()
+                .min(Comparator.comparingDouble(Transaction::getValue))
+                .orElseThrow(NoSuchElementException::new);
     }
 
 
