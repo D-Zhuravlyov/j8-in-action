@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
@@ -91,8 +92,7 @@ public class MainTraders {
             .map(t -> t.getTrader().getName())
             .distinct()
             .sorted()
-            .reduce((a, b) -> a + " " + b  )
-            .orElse("Empty");
+            .collect(joining());
     }
 
     //5.  Are any traders based in provided city?
