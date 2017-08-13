@@ -58,6 +58,13 @@ public class MainTraders {
         System.out.println("\n5. Are any traders based in provided city? City: " +City.NOONEFORTEST);
         System.out.println(isTradersPresentFrom(transactions, City.NOONEFORTEST));
 
+        System.out.println("\nRAW: ");
+        transactions = td.getTransactionList();
+        transactions.forEach(System.out::println);
+
+        System.out.println("\n6. Print all transactions’ values from the traders living in provided city.: " +City.KIEV);
+        getAllValuesForTradesFrom(transactions, City.KIEV).forEach(System.out::println);
+
     }
 
     // Find all transactions in the given year and sort them by value (small to high);
@@ -99,6 +106,14 @@ public class MainTraders {
     private static boolean isTradersPresentFrom(List<Transaction> all, City city){
         return all.stream()
                 .anyMatch(transaction -> transaction.getTrader().getCity().equals(city));
+    }
+
+    //6.  Print all transactions’ values from the traders living in provided city.
+    private static List<Double> getAllValuesForTradesFrom(List<Transaction> all, City city) {
+        return all.stream()
+                .filter(transaction -> transaction.getTrader().getCity().equals(city))
+                .map(Transaction::getValue)
+                .collect(toList());
     }
 
 /*
