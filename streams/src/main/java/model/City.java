@@ -1,5 +1,5 @@
 package model;
 
 public enum City {
-     KIEV, ODESSA, CHERKASSY
+     KIEV, ODESSA, CHERKASSY, NOONEFORTEST
 }

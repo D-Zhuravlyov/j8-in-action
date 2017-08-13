@@ -48,6 +48,12 @@ public class MainTraders {
         System.out.println("\n4.  Return a string of all traders’ names sorted alphabetically.: ");
         getTradersNamesSorted(transactions).forEach(System.out::println);
 
+        System.out.println("\nRAW: ");
+        transactions = td.getTransactionList();
+        transactions.forEach(System.out::println);
+
+        System.out.println("\n5. Are any traders based in provided city? City: " +City.NOONEFORTEST);
+        System.out.println(isTradersPresentFrom(transactions, City.NOONEFORTEST));
 
     }
 
@@ -87,10 +93,15 @@ public class MainTraders {
             .collect(toList());
     }
 
+    //5.  Are any traders based in provided city?
+    private static boolean isTradersPresentFrom(List<Transaction> all, City city){
+        return all.stream()
+                .anyMatch(transaction -> transaction.getTrader().getCity().equals(city));
+    }
+
 /*
 
 
-5.  Are any traders based in Milan?
 
             6.  Print all transactions’ values from the traders living in Cambridge.
 
