@@ -1,6 +1,7 @@
 package traders;
 
-import model.Cities;
+import model.City;
+import model.Trader;
 import model.Transaction;
 import model.TransactionsDatas;
 
@@ -32,6 +33,14 @@ public class MainTraders {
         getUniqueCities(transactions)
                 .forEach(System.out::println);
 
+        System.out.println("\nRAW: ");
+        transactions = td.getTransactionList();
+        transactions.forEach(System.out::println);
+
+        System.out.println("\nFind all traders from Kiev and sort them by name.: ");
+        getTradersFromCitySortedByName(transactions, City.KIEV)
+                .forEach(System.out::println);
+
 
     }
 
@@ -44,15 +53,24 @@ public class MainTraders {
     }
 
     //2 “What are all the unique cities where the traders work?
-    private static List<Cities> getUniqueCities(List<Transaction> all) {
+    private static List<City> getUniqueCities(List<Transaction> all) {
         return all.stream()
-                .map(Transaction::getCity)
+                .map(Transaction::getTrader)
+                .map(Trader::getCity)
                 .distinct()
                 .collect(toList());
     }
 
+    //3.  Find all traders from Kiev and sort them by name.
+    private static List<Trader> getTradersFromCitySortedByName(List<Transaction> all, City city) {
+    return all.stream()
+            .map(Transaction::getTrader)
+            .filter(tr -> tr.getCity().equals(city))
+            .sorted(Comparator.comparing(Trader::getName))
+            .collect(toList());
+    }
+
 /*
-3.  Find all traders from Cambridge and sort them by name.
 
             4.  Return a string of all traders’ names sorted alphabetically.
 

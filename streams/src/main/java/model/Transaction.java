@@ -4,12 +4,12 @@ public class Transaction {
 
     private int year;
     private Double value;
-    private Cities city;
+    private Trader trader;
 
-    public Transaction(int year, Double value, Cities city) {
+    public Transaction(int year, Double value, Trader trader) {
         this.year = year;
         this.value = value;
-        this.city = city;
+        this.trader = trader;
     }
 
     public Double getValue() {
@@ -20,8 +20,8 @@ public class Transaction {
         return year;
     }
 
-    public Cities getCity() {
-        return city;
+    public Trader getTrader() {
+        return trader;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Transaction {
         return "Transaction{" +
                 "year=" + year +
                 ", value=" + value +
-                ", city=" + city +
+                ", trader=" + trader +
                 '}';
     }
 }

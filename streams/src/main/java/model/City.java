@@ -1,5 +1,5 @@
 package model;
 
-public enum Cities {
+public enum City {
      KIEV, ODESSA, CHERKASSY
 }
