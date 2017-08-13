@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingDouble;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
@@ -97,7 +99,7 @@ public class MainTraders {
             .map(Transaction::getTrader)
             .filter(tr -> tr.getCity().equals(city))
             .distinct()
-            .sorted(Comparator.comparing(Trader::getName))
+            .sorted(comparing(Trader::getName))
             .collect(toList());
     }
 
@@ -127,14 +129,9 @@ public class MainTraders {
     //7.  What’s the highest value of all the transactions?
     private static Double getHighestTransactionValue(List<Transaction> all){
         return all.stream()
-                    .map(Transaction::getValue)
-                    .reduce(Double::max)
-                    .orElseThrow(NoSuchElementException::new);
+                    .max(comparingDouble(Transaction::getValue))
+                    .orElseThrow(NoSuchElementException::new).getValue();
     }
-/*
 
-
-
-            8.  Find the transaction with the smallest value.*/
 
 }
